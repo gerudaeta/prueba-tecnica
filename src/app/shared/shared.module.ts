@@ -5,6 +5,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatDialogModule} from "@angular/material/dialog";
 import {DataPropertyGetterPipe} from "./pipes/data-property-getter.pipe";
 import { CapitalizeFirstLetterPipePipe } from './pipes/capitalize-first-letter-pipe.pipe';
+import {LoadingService} from "./services/loading.service";
+import {NotificationService} from "./services/notification.service";
 
 @NgModule({
   declarations: [
@@ -22,6 +24,10 @@ import { CapitalizeFirstLetterPipePipe } from './pipes/capitalize-first-letter-p
   imports: [
     MatSnackBarModule,
     MatDialogModule
+  ],
+  providers: [
+    LoadingService,
+    NotificationService
   ]
 })
 export class SharedModule { }

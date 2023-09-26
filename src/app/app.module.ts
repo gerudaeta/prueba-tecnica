@@ -7,6 +7,7 @@ import {AppRoutingModule} from "./app.routes";
 import {SharedModule} from "./shared/shared.module";
 import {ErrorInterceptor} from "./core/interceptors/error.interceptor";
 import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
+import {LoadingService} from "./shared/services/loading.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {LoadingInterceptor} from "./core/interceptors/loading.interceptor";
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })

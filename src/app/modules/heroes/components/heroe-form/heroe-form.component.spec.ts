@@ -8,7 +8,9 @@ describe('HeroeFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeroeFormComponent]
+      declarations: [HeroeFormComponent],
+      imports: [
+      ]
     });
     fixture = TestBed.createComponent(HeroeFormComponent);
     component = fixture.componentInstance;
