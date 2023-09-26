@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListPageComponent } from './list-page.component';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('ListPageComponent', () => {
   let component: ListPageComponent;
@@ -8,7 +8,10 @@ describe('ListPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListPageComponent]
+      declarations: [ListPageComponent],
+      imports: [
+        HttpClientModule
+      ]
     });
     fixture = TestBed.createComponent(ListPageComponent);
     component = fixture.componentInstance;
