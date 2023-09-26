@@ -9,7 +9,6 @@ export class UppercaseDirective {
 
   @HostListener('input', ['$event']) onInput(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    const newValue = inputElement.value.toUpperCase();
-    inputElement.value = newValue;
+    inputElement.value = inputElement.value.toUpperCase();
   }
 }

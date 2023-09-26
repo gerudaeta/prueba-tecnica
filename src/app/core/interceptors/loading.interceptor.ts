@@ -18,11 +18,15 @@ export class LoadingInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((event) => {
         if (event instanceof HttpResponse) {
-          this.loadingService.close();
+          setTimeout(() => {
+            this.loadingService.close();
+          }, 2000);
         }
       }),
       finalize(() => {
-        this.loadingService.close();
+        setTimeout(() => {
+          this.loadingService.close();
+        }, 2000);
       })
     );
   }

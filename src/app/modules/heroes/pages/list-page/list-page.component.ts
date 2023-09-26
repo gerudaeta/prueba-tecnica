@@ -33,6 +33,7 @@ export class ListPageComponent implements OnInit {
     this.heroesColumns = [
       { name: 'Codigo', dataKey: 'id', isSortable: false, isShowable: true },
       { name: 'Nombre', dataKey: 'superhero', isSortable: false, isShowable: true },
+      { name: 'Editora', dataKey: 'publisher', isSortable: false, isShowable: true },
       { name: 'Estado', dataKey: 'status', isSortable: false, isShowable: true, isStatus: true },
       { name: 'Acciones', dataKey: 'action', position: 'right' },
     ];
@@ -52,6 +53,8 @@ export class ListPageComponent implements OnInit {
       data: heroe,
     });
     dialogRef.afterClosed().subscribe(() => {
+      this.heroesParams.pageNumber = 1;
+      this.heroesParams.pageSize = 5;
       this.getHeroes();
     });
   }

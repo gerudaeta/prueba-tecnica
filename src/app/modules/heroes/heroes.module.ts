@@ -7,6 +7,8 @@ import {HeroesRoutingModule} from "./heroes-routing.module";
 import {MaterialModule} from "../../material/material.module";
 import {TableComponent} from "../../shared/components/table/table.component";
 import { HeroeFormComponent } from './components/heroe-form/heroe-form.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {SharedModule} from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { HeroeFormComponent } from './components/heroe-form/heroe-form.component
     HeroesRoutingModule,
     MaterialModule,
     TableComponent,
+    MatSlideToggleModule,
+    SharedModule,
   ]
 })
 export class HeroesModule { }

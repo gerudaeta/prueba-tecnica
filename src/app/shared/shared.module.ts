@@ -16,7 +16,8 @@ import { CapitalizeFirstLetterPipePipe } from './pipes/capitalize-first-letter-p
   exports: [
     Error404PageComponent,
     DataPropertyGetterPipe,
-    CapitalizeFirstLetterPipePipe
+    CapitalizeFirstLetterPipePipe,
+    UppercaseDirective
   ],
   imports: [
     MatSnackBarModule,

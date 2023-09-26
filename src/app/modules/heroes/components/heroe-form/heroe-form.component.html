@@ -1,1 +1,85 @@
-<p>heroe-form works!</p>
+<mat-card>
+  <mat-card-header>
+    <h1>
+      {{ currentHero.id ? 'Editar' : 'Agregar' }}
+      héroe
+      <small *ngIf="currentHero.id">{{ currentHero.superhero }}</small>
+    </h1>
+
+    <mat-divider class="mb-2"></mat-divider>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form class="grid" [formGroup]="heroeForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Super héroe</mat-label>
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="superhero"
+          appUppercase
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12 sm:col-6">
+        <mat-label>Alter ego</mat-label>
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="alter_ego"
+        />
+      </mat-form-field>
+
+
+      <mat-form-field class="col-12">
+        <mat-label>Primera aparición</mat-label>
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="first_appearance"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Personajes</mat-label>
+        <input
+          matInput
+          type="text"
+          required
+          formControlName="characters"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Creador</mat-label>
+        <mat-select
+          formControlName="publisher"
+          required
+        >
+          <mat-option *ngFor="let publisher of publishers"
+                      [value]="publisher.id">
+            {{ publisher.desc }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-slide-toggle formControlName="status" required>Status</mat-slide-toggle>
+
+      <div class="flex justify-content-between">
+        <button mat-flat-button mat-dialog-close color="warn">
+          Cancelar
+        </button>
+
+        <span></span>
+
+        <button mat-flat-button color="primary" [disabled]="!heroeForm.dirty || !heroeForm.valid" type="submit">
+          <mat-icon>save</mat-icon>Guardar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
