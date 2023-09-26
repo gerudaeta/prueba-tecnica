@@ -69,7 +69,8 @@ export class ListPageComponent implements OnInit {
   }
 
   filter($event: any) {
-    this.heroesParams.searchName = $event;
+    let searchName = this.capitalizeFirstLetter($event);
+    this.heroesParams.searchName = searchName;
     this.heroesParams.pageNumber = 1;
     this.heroesParams.pageSize = 5;
     this.getHeroes();
@@ -79,5 +80,13 @@ export class ListPageComponent implements OnInit {
     this.heroesParams.pageNumber = $event.pageNumber;
     this.heroesParams.pageSize = $event.pageSize;
     this.getHeroes();
+  }
+
+  private capitalizeFirstLetter(inputString: string): string {
+    if (inputString.length === 0) {
+      return inputString;
+    }
+
+    return inputString.charAt(0).toUpperCase() + inputString.slice(1);
   }
 }
