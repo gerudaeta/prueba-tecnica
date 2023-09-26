@@ -1,0 +1,16 @@
+<div class="scroll" [hidden]="!heroes">
+  <app-table [title]="'Heroes'"
+             [subtitle]="'Listado de Heroes'"
+             [data]="heroes && heroes.data"
+             [columns]="heroesColumns"
+             (onFilter)="filter($event)"
+             (onReload)="reload()" (onCreateForm)="openForm()"
+             (onDelete)="remove($event)"
+             (onPageChanged)="pageChanged($event)"
+             [totalCount]="heroes && heroes.totalCount"
+             [messageDeleteDialog]="messageDeleteDialog"
+             [pageSize]="heroesParams.pageSize">
+  </app-table>
+
+</div>
+

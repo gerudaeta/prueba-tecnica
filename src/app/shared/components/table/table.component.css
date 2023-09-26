@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.mat-table {
+  font-family: Roboto,Helvetica Neue,sans-serif;
+}
+
+.mat-header-cell {
+  font-size: 12px;
+  color: rgba(0,0,0,.54);
+}
+
+td.mat-cell {
+  border-bottom-style:dotted;
+  height: 30px!important;
+}
+
+.mat-raised-button {
+  min-width: 0px!important;
+}
