@@ -47,6 +47,8 @@ export class HeroeFormComponent implements OnInit {
   onSubmit() {
     if ( this.heroeForm.invalid ) return;
 
+    this.currentHero.superhero = this.currentHero.superhero.toUpperCase();
+
     if ( this.currentHero.id ) {
       this.heroeService.updateHeroe(this.currentHero.id, this.currentHero)
         .subscribe( hero => {
