@@ -12,7 +12,10 @@ describe('LoadingService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LoadingService],
+      providers: [
+        LoadingService,
+        { provide: MatDialog, useValue: {} },
+      ],
       imports: [],
     });
     service = TestBed.inject(LoadingService);
