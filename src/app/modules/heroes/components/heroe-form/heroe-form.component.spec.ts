@@ -1,7 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroeFormComponent } from './heroe-form.component';
-import {InjectionToken} from "@angular/core";
+import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {HeroeService} from "../../../../services/heroe.service";
+import {NotificationService} from "../../../../shared/services/notification.service";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatCardModule} from "@angular/material/card";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatIconModule} from "@angular/material/icon";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('HeroeFormComponent', () => {
   let component: HeroeFormComponent;
@@ -9,12 +23,32 @@ describe('HeroeFormComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeroeFormComponent],
+      declarations: [
+        HeroeFormComponent
+      ],
       imports: [
+        HttpClientTestingModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatCardModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatSlideToggleModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatInputModule,
+        NoopAnimationsModule
       ],
       providers: [
-        { provide: MAT_MDC_DIALOG_DATA, useValue: {} }
-      ]
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {},
+        },
+        HeroeService,
+        NotificationService
+      ],
     });
     fixture = TestBed.createComponent(HeroeFormComponent);
     component = fixture.componentInstance;
@@ -25,5 +59,3 @@ describe('HeroeFormComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-export const MAT_MDC_DIALOG_DATA = new InjectionToken<any>('MAT_MDC_DIALOG_DATA');
