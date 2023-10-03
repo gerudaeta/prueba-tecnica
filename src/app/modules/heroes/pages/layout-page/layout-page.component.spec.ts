@@ -15,16 +15,27 @@ import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialogModule} from "@angular/material/dialog";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ActivatedRoute} from "@angular/router";
 
 describe('LayoutPageComponent', () => {
   let component: LayoutPageComponent;
   let fixture: ComponentFixture<LayoutPageComponent>;
+
+  const activatedRouteStub = {
+    snapshot: {
+      paramMap: {
+        get: (param: string) => '1', // Simula un valor para el parámetro 'id'
+      },
+    },
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LayoutPageComponent],
       imports: [
         CommonModule,
+        BrowserAnimationsModule,
         ReactiveFormsModule,
         HeroesRoutingModule,
         TableComponent,
@@ -39,7 +50,10 @@ describe('LayoutPageComponent', () => {
         MatCardModule,
         MatSelectModule,
         MatDialogModule,
-      ]
+      ],
+      providers: [
+        { provide: ActivatedRoute, useValue: activatedRouteStub },
+      ],
     });
     fixture = TestBed.createComponent(LayoutPageComponent);
     component = fixture.componentInstance;

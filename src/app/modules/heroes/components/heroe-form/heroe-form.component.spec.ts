@@ -13,7 +13,7 @@ describe('HeroeFormComponent', () => {
       imports: [
       ],
       providers: [
-        { provide: MAT_MDC_DIALOG_DATA, useValue: {} } // Proveedor simulado para MAT_MDC_DIALOG_DATA
+        { provide: MAT_MDC_DIALOG_DATA, useValue: {} }
       ]
     });
     fixture = TestBed.createComponent(HeroeFormComponent);

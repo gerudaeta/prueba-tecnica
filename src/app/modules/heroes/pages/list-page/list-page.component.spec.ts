@@ -3,6 +3,7 @@ import { ListPageComponent } from './list-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {of} from "rxjs";
+import {TableComponent} from "../../../../shared/components/table/table.component";
 
 describe('ListPageComponent', () => {
   let component: ListPageComponent;
@@ -13,7 +14,8 @@ describe('ListPageComponent', () => {
       declarations: [ListPageComponent],
       imports: [
         HttpClientModule,
-        MatDialogModule
+        MatDialogModule,
+        TableComponent
       ],
       providers: [
         {

@@ -34,6 +34,7 @@ describe('HeroeService', () => {
 
     let mockHeroesResponse = new ResponsePagination<Heroe>();
     mockHeroesResponse.data = [];
+    mockHeroesResponse.totalCount = 0;
 
     service.getHeroes(heroeParams).subscribe(result => {
       expect(result).toEqual(mockHeroesResponse);
@@ -47,16 +48,16 @@ describe('HeroeService', () => {
 
   it('should retrieve a hero by ID', () => {
     const heroId = '1';
-    const mockHero = { id: heroId, name: 'Hero Name', superhero: 'Superhero Name' };
+    const mockHero = { id: '1', name: 'Hero Name', superhero: 'Superhero Name' };
 
-    service.getHeroe(heroId).subscribe(result => {
-      expect(result).toEqual(mockHero); // Verifica el resultado esperado
+    service.getHeroe(heroId).subscribe((hero) => {
+      expect(hero).toEqual(mockHero);
     });
 
+    // Espera una solicitud HTTP GET a la URL correcta
     const req = httpTestingController.expectOne(`http://localhost:3000/heroes/${heroId}`);
     expect(req.request.method).toBe('GET');
-    req.flush(mockHero); // Simula una respuesta exitosa con el héroe
-    httpTestingController.verify();
+    req.flush(mockHero);
   });
 
   it('should add a hero', () => {

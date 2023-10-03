@@ -2,28 +2,21 @@ import { TestBed } from '@angular/core/testing';
 
 import { LoadingService } from './loading.service';
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
+import {SharedModule} from "../shared.module";
+import {LoadingComponent} from "../components/loading/loading.component";
 
 describe('LoadingService', () => {
   let service: LoadingService;
-
-  const matDialogMock = {
-    open: () => ({
-      afterClosed: () => of({}),
-    }),
-  };
+  let dialog: MatDialog;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        MatDialogModule
-      ],
-      declarations: [
-        LoadingService
-      ],
-      providers: [{ provide: MatDialog, useValue: matDialogMock }]
+      providers: [LoadingService],
+      imports: [],
     });
     service = TestBed.inject(LoadingService);
+    dialog = TestBed.inject(MatDialog);
   });
 
   it('should be created', () => {
