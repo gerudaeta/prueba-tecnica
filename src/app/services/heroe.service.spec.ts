@@ -47,17 +47,24 @@ describe('HeroeService', () => {
   });
 
   it('should retrieve a hero by ID', () => {
-    const heroId = '1';
-    const mockHero = { id: '1', name: 'Hero Name', superhero: 'Superhero Name' };
+    const mockHero = {
+      id: '1',
+      name: 'Hero Name',
+      superhero: 'Superhero Name'
+    };
 
-    service.getHeroe(heroId).subscribe((hero) => {
+    const heroId = '1';
+
+    service.getHeroe(heroId).subscribe(hero => {
       expect(hero).toEqual(mockHero);
     });
 
-    // Espera una solicitud HTTP GET a la URL correcta
     const req = httpTestingController.expectOne(`http://localhost:3000/heroes/${heroId}`);
     expect(req.request.method).toBe('GET');
+    
     req.flush(mockHero);
+
+    httpTestingController.verify();
   });
 
   it('should add a hero', () => {
