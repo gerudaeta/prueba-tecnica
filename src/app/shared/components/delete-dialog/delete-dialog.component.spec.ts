@@ -1,18 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteDialogComponent } from './delete-dialog.component';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {of} from "rxjs";
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 describe('DeleteDialogComponent', () => {
   let component: DeleteDialogComponent;
   let fixture: ComponentFixture<DeleteDialogComponent>;
-
-  const matDialogMock = {
-    open: () => ({
-      afterClosed: () => of({}),
-    }),
-  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -20,7 +13,10 @@ describe('DeleteDialogComponent', () => {
         DeleteDialogComponent,
         MatDialogModule
       ],
-      providers: [{ provide: MatDialog, useValue: matDialogMock }]
+      providers: [
+        { provide: MatDialogRef, useClass: MatDialogRefMock },
+        { provide: MAT_DIALOG_DATA, useValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(DeleteDialogComponent);
     component = fixture.componentInstance;
@@ -31,3 +27,7 @@ describe('DeleteDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MatDialogRefMock {
+  close() { }
+}
