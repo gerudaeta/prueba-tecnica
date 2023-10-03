@@ -5,7 +5,7 @@ import {HeroeService} from "../../../../services/heroe.service";
 import {HeroeParams} from "../../../../models/params/heroeParams";
 import {PaginatedFilter} from "../../../../models/common/paginatedFilter";
 import {ResponsePagination} from "../../../../models/common/responsePagination";
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {HeroeFormComponent} from "../../components/heroe-form/heroe-form.component";
 
 @Component({
@@ -67,13 +67,14 @@ export class ListPageComponent implements OnInit {
 
   remove($event: string) {
     this.heroeService.deleteHeroe($event).subscribe(() => {
+      this.heroesParams.pageNumber = 1;
+      this.heroesParams.pageSize = 5;
       this.getHeroes();
     });
   }
 
   filter($event: any) {
-    let searchName = this.capitalizeFirstLetter($event);
-    this.heroesParams.searchName = searchName;
+    this.heroesParams.searchName = this.capitalizeFirstLetter($event);
     this.heroesParams.pageNumber = 1;
     this.heroesParams.pageSize = 5;
     this.getHeroes();

@@ -43,6 +43,17 @@ export class HeroeService {
     return this.apiService.getRequest(url);
   }
 
+  getHeroeBySuperhero(name: string): Observable<Heroe[]> {
+    const url = `heroes?superhero=${name}`;
+    return this.apiService.getRequest<any>(url).pipe(
+      map((x: any) => {
+        let response: Heroe[];
+        response = x.body;
+        return response;
+      })
+    );
+  }
+
   addHeroe(heroe: Heroe): Observable<any> {
     const url = `heroes`;
     return this.apiService.postRequest(url, heroe);
